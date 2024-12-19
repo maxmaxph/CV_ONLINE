@@ -1,0 +1,541 @@
+/* ======================================================================
+   Développé par Maxime Lenfant
+   Site : https://maxime-lenfant.fr
+   Année : 2024
+   Version : 1.0
+====================================================================== */
+
+/* ======================================================================
+   Styles globaux
+   ====================================================================== */
+
+   body {
+  font-family: 'Poppins', sans-serif;
+  /* Police globale */
+  margin: 0;
+  padding: 0;
+  background-color: #f4f4f4;
+  /* Couleur de fond neutre */
+  color: #333;
+  /* Couleur du texte */
+}
+
+/* ======================================================================
+   Conteneur principal
+   ====================================================================== */
+.cv-container {
+  display: flex;
+  max-width: 1000px;
+  margin: 20px auto;
+  background-color: #fff;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+  box-sizing: border-box;
+}
+
+/* ======================================================================
+   Colonne gauche (Sidebar)
+====================================================================== */
+
+.cv-sidebar {
+  background-color: #211e25;
+  color: #fff;
+  width: 50%;
+  padding: 20px;
+  box-sizing: border-box;
+  text-align: center;
+}
+
+.cv-sidebar h2,
+.cv-sidebar h3 {
+  color: #f39c12;
+}
+
+.cv-sidebar p,
+.cv-sidebar a {
+  margin: 10px 0;
+}
+
+
+/* ======================================================================
+   Section Contact
+====================================================================== */
+
+.contact-link {
+  color: #fff;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  transition: color 0.3s ease-in-out;
+  position: relative;
+}
+
+.contact-link i {
+  font-size: 1.2em;
+  margin-right: 8px;
+  transition: transform 0.3s ease-in-out;
+}
+
+.contact-link:hover {
+  color: #f39c12;
+}
+
+.contact-link:hover i {
+  transform: scale(1.2);
+}
+
+.contact-link::after {
+  content: attr(title);
+  position: absolute;
+  background-color: #f39c12;
+  color: #fff;
+  padding: 5px 10px;
+  border-radius: 5px;
+  font-size: 0.8em;
+  white-space: nowrap;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 0.3s, transform 0.3s;
+  pointer-events: none;
+}
+
+.contact-link:hover::after {
+  opacity: 1;
+  transform: translateY(0);
+
+}
+
+/* ======================================================================
+   Profil (Image et description)
+====================================================================== */
+
+.profile {
+  position: relative;
+  text-align: center;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.profile-image {
+  width: 80%;
+  aspect-ratio: 3 / 4.5;
+  overflow: hidden;
+  margin: 0 auto;
+}
+
+.profile-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+  transition: transform 0.3s ease-in-out;
+}
+
+.profile-image img:hover {
+  transform: scale(1.3);
+}
+
+.profile p {
+  text-align: start;
+}
+
+/* ======================================================================
+   Compétences
+====================================================================== */
+
+.skills ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.skills li {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 10px;
+}
+
+.skill-bar {
+  position: relative;
+  background: #e0e0e0;
+  border-radius: 5px;
+  height: 8px;
+  width: 100%;
+  overflow: visible;
+}
+
+.skill-bar span {
+  display: block;
+  height: 100%;
+  background: #f39c12;
+  border-radius: 5px;
+  width: 0;
+  transition: width 2s ease-in-out;
+  position: relative;
+}
+
+.skill-bar span::after {
+  content: attr(data-percent);
+  position: absolute;
+  top: -25px;
+  right: 0;
+  background: #f39c12;
+  color: #fff;
+  padding: 3px 8px;
+  border-radius: 5px;
+  font-size: 0.8em;
+  white-space: nowrap;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 0.3s, transform 0.3s;
+  pointer-events: none;
+}
+
+.skill-bar span:hover::after {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.language-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 5px 0;
+}
+
+.flag-icon {
+  color: #f39c12;
+  transition: transform 0.3s ease-in-out;
+}
+
+.flag-icon:hover {
+  transform: scale(1.2);
+}
+
+.item-contact {
+  text-align: start;
+}
+
+.item-contact i {
+  font-size: 1.2em;
+  color: #f39c12;
+  margin-right: 8px;
+  vertical-align: middle;
+}
+
+.mobile-header {
+  display: none;
+}
+
+/* ======================================================================
+   Colonne droite (Contenu principal)
+====================================================================== */
+
+.cv-main {
+  width: 65%;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.cv-main header {
+  text-align: end;
+  margin-bottom: 100px;
+}
+
+header h1 {
+  font-size: 2.7rem;
+  font-weight: 600;
+  color: #211e25;
+}
+
+header h2 {
+  font-size: 1.45rem;
+  color: #666;
+  margin: 10px 0;
+}
+
+h3 {
+  margin-top: 20px;
+  border-bottom: 2px solid #f39c12;
+  padding-bottom: 5px;
+  font-size: 1.5em;
+}
+
+h4{
+  margin-top: 10px;
+  margin-bottom: 10px;
+  font-size: 1.2em;
+}
+/* ======================================================================
+   Expérience professionnelle
+====================================================================== */
+
+.job {
+  margin-bottom: 20px;
+}
+
+.job-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.job-header i {
+  margin-right: 8px;
+  color: #f39c12;
+  font-size: 1.2em;
+  vertical-align: middle;
+}
+
+.job .company {
+  font-weight: 500;
+  color: #555;
+  margin: 2px 0 5px;
+  font-size: 0.9em;
+}
+
+.job-header .job-date {
+  font-size: 0.95em;
+  font-weight: 400;
+  color: #555;
+  white-space: nowrap;
+}
+
+.job p {
+  text-align: justify;
+  line-height: 1.5;
+  margin: 5px 0 10px;
+}
+
+/* ======================================================================
+   Section Formation
+====================================================================== */
+
+.education {
+  margin-top: 20px;
+}
+
+.education-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 10px 0;
+  font-size: 1rem;
+  color: #333;
+}
+
+.education-item i {
+  margin-right: 10px;
+  color: #f39c12;
+  font-size: 1.2rem;
+}
+
+.education-text {
+  flex: 1;
+  font-weight: bold;
+}
+
+.education-date {
+  font-size: 0.95rem;
+  color: #555;
+  white-space: nowrap;
+}
+
+/* ======================================================================
+   Section Références
+====================================================================== */
+
+.references-container {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  flex-wrap: nowrap;
+}
+
+.reference-item {
+  flex: 1;
+  min-width: 300px;
+  position: relative;
+}
+
+/* Liens des références */
+.reference-link {
+  color: #211e25;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  margin: 8px 0;
+  transition: color 0.3s ease-in-out;
+}
+
+.reference-link i {
+  margin-right: 8px;
+  color: #f39c12;
+  transition: transform 0.3s ease-in-out;
+}
+
+.reference-link:hover {
+  color: #f39c12;
+}
+
+.reference-link:hover i {
+  transform: scale(1.2);
+}
+
+.reference-link::after {
+  content: attr(title);
+  position: absolute;
+  bottom: -30px;
+  left: 0;
+  background-color: #f39c12;
+  color: #fff;
+  padding: 5px 10px;
+  border-radius: 5px;
+  font-size: 0.8em;
+  white-space: nowrap;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 0.3s, transform 0.3s;
+  pointer-events: none;
+}
+
+.reference-link:hover::after {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ======================================================================
+   Section Téléchargement
+====================================================================== */
+.download-section {
+  margin-top: 30px;
+  padding: 20px;
+  text-align: center;
+  background-color: #f4f4f4;
+  border-top: 2px solid #f39c12;
+}
+
+.download-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.cv-download-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 25px;
+  background-color: #f39c12;
+  color: #fff;
+  font-size: 1.2rem;
+  font-weight: bold;
+  border: none;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.cv-download-btn i {
+  margin-right: 10px;
+  font-size: 1.5rem;
+}
+
+.cv-download-btn:hover {
+  background-color: #d98607;
+  transform: scale(1.05);
+}
+
+/* ======================================================================
+   Footer
+====================================================================== */
+
+.cv-footer {
+  background-color: #211e25;
+  color: #fff;
+  padding: 20px 10px;
+  text-align: center;
+  font-size: 0.9rem;
+  border-top: 2px solid #f39c12;
+}
+
+.footer-container p {
+  margin: 5px 0;
+}
+
+.cv-footer a {
+  color: #f39c12;
+  text-decoration: none;
+  font-weight: bold;
+  transition: color 0.3s ease;
+}
+
+.cv-footer a:hover {
+  color: #d98607;
+}
+
+/* ======================================================================
+   Responsive Design
+====================================================================== */
+
+@media (max-width: 768px) {
+
+  .cv-container {
+    flex-direction: column;
+    box-shadow: none;
+    margin: 5%;
+  }
+
+  .references-container {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .reference-item {
+    min-width: 100%;
+  }
+
+  .cv-sidebar,
+  .cv-main {
+    width: 100%;
+    padding: 15px;
+  }
+
+  .cv-actions {
+    justify-content: flex-start;
+    flex-direction: column;
+  }
+
+  .profile img {
+    width: 100%;
+  }
+
+  .cv-main header {
+    display: none;
+  }
+
+  .mobile-header {
+    display: block;
+    margin-top: 10px;
+  }
+
+  .mobile-header h1 {
+    font-size: 1.8em;
+    margin: 0;
+    color: #fff;
+  }
+
+  .mobile-header h2 {
+    font-size: 1em;
+    color: #f39c12;
+  }
+
+  .skills ul {
+    list-style: none;
+    padding-left: 0;
+  }
+
+  .job p {
+    margin: 10px 0;
+  }
+}
