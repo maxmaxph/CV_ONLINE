@@ -1,6 +1,7 @@
 /* ======================================================================
    Développé par Maxime Lenfant
    Site : https://maxime-lenfant.fr
+   licence : creative commons V1.0 (https://creativecommons.org/licenses/by/4.0/)
    Année : 2024
    Version : 1.0
 ====================================================================== */
@@ -260,6 +261,12 @@ h3 {
   font-size: 1.5em;
 }
 
+h3#download-title {
+  margin-top: 20px;
+  border-bottom: 2px solid #f39c12;
+  padding-bottom: 5px;
+  font-size: 1.5em;
+}
 h4{
   margin-top: 10px;
   margin-bottom: 10px;
@@ -472,6 +479,24 @@ h4{
 
 .cv-footer a:hover {
   color: #d98607;
+}
+
+.github-link {
+  color: #f39c12; 
+  text-decoration: none;
+  font-weight: bold; 
+  display: inline-flex; 
+  align-items: center; 
+  gap: 8px; 
+  transition: color 0.3s ease-in-out; 
+}
+
+.github-link i {
+  font-size: 1.5rem; 
+}
+
+.github-link:hover {
+  color: #d98607; 
 }
 
 /* ======================================================================
